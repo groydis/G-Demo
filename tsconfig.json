@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "*": [
+          "src/types/*"
+        ]
+      },
+      "module": "commonjs",
+      "removeComments": true,
+      "noImplicitAny": true,
+      "preserveConstEnums": true,
+      "allowSyntheticDefaultImports": true,
+      "rootDir": "src",
+      "outDir": "build",
+      "target": "ES6",
+      "lib": ["es2021"],
+      "types": [
+        "node"
+      ],
+      "typeRoots": [
+        "node_modules/@types",
+        "@types"
+      ]
+    },
+    "include": [
+      "**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+    ]
+  }
+  

@@ -1,0 +1,40 @@
+version: '3.8'
+
+networks:
+  demo-api:
+    external: true
+    name: localdev
+
+services:
+  mongodb:
+    image: mongo
+    container_name: gdemo-api-mongodb
+    env_file:
+      - .env.mongo
+    volumes:
+      - mongodb-data:/data/db
+      - ./setup:/docker-entrypoint-initdb.d
+    networks:
+      - demo-api
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
+  mongo-express:
+    image: mongo-express
+    container_name: gdemo-api-mongodb-express
+    env_file:
+      - .env.mongo-express
+    volumes:
+      - mongodb-data:/data/db
+    depends_on:
+      - mongodb
+    networks:
+      - demo-api
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+volumes:
+  mongodb-data:
+    name: gdemo-api-mongodb-data

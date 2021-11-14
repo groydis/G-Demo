@@ -1,0 +1,1 @@
+export { UserDALModel } from './mongoose'
